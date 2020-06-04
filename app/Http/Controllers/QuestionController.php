@@ -50,8 +50,8 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //$question= Question::findorfail($question);
-        //return response()->json($question);
+        //return $question
+
         return new QuestionResource($question);
     }
 
@@ -75,7 +75,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return response('updated');
     }
 
     /**
