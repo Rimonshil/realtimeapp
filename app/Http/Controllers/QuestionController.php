@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\QuestionResource;
 use App\Model\Question;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+       // $question= Question::all();
+        //return response()->json($question);
+        return QuestionResource::collection(Question::all());
     }
 
     /**
@@ -35,7 +38,8 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $question= Question::create($request->all());
+        return response('Inserted');
     }
 
     /**
@@ -46,7 +50,9 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        //$question= Question::findorfail($question);
+        //return response()->json($question);
+        return new QuestionResource($question);
     }
 
     /**
@@ -57,7 +63,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        
     }
 
     /**
@@ -80,6 +86,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return response('deleted');
     }
 }

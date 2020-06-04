@@ -2,12 +2,18 @@
 
 namespace App\Model;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+    protected $fillable = 
+    [
+         'title', 'slug', 'body', 'category_id','user_id'
+    ];
+
     public function user() {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(User::class);
     }
     public function replies() {
         return $this->hasMany(Reply::class);
@@ -16,5 +22,9 @@ class Question extends Model
     public function category() 
     {
         return $this->belongsTo(Category::class);
+    }
+    public function getPathAttribute() 
+    {
+        return asset("api/question/$this->slug");
     }
 }
