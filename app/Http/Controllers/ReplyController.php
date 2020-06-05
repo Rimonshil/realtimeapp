@@ -16,6 +16,11 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('JWT', ['except' => ['index', 'show']]);
+    }
+
     public function index(Question $question)
     {
         //return Reply::all();

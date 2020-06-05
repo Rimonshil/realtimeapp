@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('JWT', ['except' => ['index', 'show']]);
+    }
+    
     public function LikeIt(Reply $reply) 
     {
          $reply->like()->create([
