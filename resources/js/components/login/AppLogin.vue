@@ -8,7 +8,6 @@
         >
           <v-text-field
             v-model="form.email"
-            :rules="emailRules"
             label="E-mail"
             required
           ></v-text-field>
@@ -20,7 +19,6 @@
         >
           <v-text-field
             v-model="form.password"
-            :rules="nameRules"
             :counter="10"
             label="Password"
             required
@@ -44,8 +42,7 @@ export default {
     },
     methods: {
         submit(){
-            axios.post('/api/auth/login', this.form) 
-            .then(res=> console.log(res.data))
+           User.login(this.form)
         }
     }
 }

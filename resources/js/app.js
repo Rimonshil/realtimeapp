@@ -9,6 +9,9 @@ Vue.use(Vuetify)
 
 import Home from './components/Home.vue';
 import router from './Router/Router.js';
+import User from './Helpers/User.js';
+window.User=User;
+
 
 new Vue({
     vuetify : new Vuetify(),
