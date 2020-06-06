@@ -3,12 +3,15 @@
         <v-toolbar-side-icon></v-toolbar-side-icon>
         <v-toolbar-title>Title</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down">
-            <v-btn flat>FORUM</v-btn>
-            <v-btn flat>ASK QUESTION</v-btn>
-            <v-btn flat>CATEGORY</v-btn>
-            <v-btn flat>LOGIN</v-btn>
-
-        </v-toolbar-items>
+        <div class="hidden-sm-and-down">
+            <router-link>
+                <v-btn flat to="/">FORUM</v-btn>
+            </router-link>
+               <v-btn flat>ASK QUESTION</v-btn>
+                <v-btn flat>CATEGORY</v-btn>
+             <router-link to="/login">
+                <v-btn flat>LOGIN</v-btn>
+            </router-link>
+        </div>
     </v-toolbar>
 </template>
